@@ -1,13 +1,13 @@
 package com.example
 
 import nicmart.church.CBoolean._
-import nicmart.church.{CList, CPair}
+import nicmart.church.CPair
 import nicmart.church.CList._
 import nicmart.church.CPair._
 import nicmart.church.CNat._
 
 object Hello {
-  def main(args: Array[String]): Unit = {
+  /*def main(args: Array[String]): Unit = {
     println {
       ifthenelse(and(fls)(tru)) { "True!" } { "False!"}
     }
@@ -68,5 +68,5 @@ object Hello {
     }
 
     println("Hello, world!")
-  }
+  }*/
 }
