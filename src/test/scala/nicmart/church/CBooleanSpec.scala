@@ -49,4 +49,90 @@ class CBooleanSpec extends WordSpec
       }
     }
   }
+
+  "or" should {
+    "return false" when {
+      "both arguments are false" in {
+        assert(or(fls)(fls)(false)(true))
+      }
+    }
+    "return true" when {
+      "one argument is true" in {
+        assert(or(fls)(tru)(true)(false))
+        assert(or(tru)(fls)(true)(false))
+      }
+      "both arguments are true" in {
+        assert(or(tru)(tru)(true)(false))
+      }
+    }
+  }
+
+  "xor" should {
+    "return false" when {
+      "both arguments are false" in {
+        assert(xor(fls)(fls)(false)(true))
+      }
+      "both arguments are true" in {
+        assert(xor(tru)(tru)(false)(true))
+      }
+    }
+    "return true" when {
+      "exactly one argument is true" in {
+        assert(xor(fls)(tru)(true)(false))
+        assert(xor(tru)(fls)(true)(false))
+      }
+    }
+  }
+
+  "not" should {
+    "return true" when {
+      "false" in {
+        assert(not(fls)(true)(false))
+      }
+    }
+    "return false" when {
+      "true" in {
+        assert(not(tru)(false)(true))
+      }
+    }
+  }
+
+  "ifthenelse" should {
+    "return the first block" when {
+      "the argument is true" in {
+        assert(ifthenelse(tru)(1)(2) === 1)
+      }
+    }
+    "return the second block" when {
+      "the argument is false" in {
+        assert(ifthenelse(fls)(1)(2) === 2)
+      }
+    }
+  }
+
+  "unchurch" should {
+    "return a native true" when {
+      "a Church true is given" in {
+        assert(unchurch(tru))
+      }
+    }
+    "return a native false" when {
+      "a Church false is given" in {
+        assert(!unchurch(fls))
+      }
+    }
+  }
+
+  "church" should {
+    "return church true" when {
+      "a native true is given" in {
+        assert(church(true)(true)(false))
+      }
+    }
+    "return church false" when {
+      "a native false is given" in {
+        assert(!church(false)(true)(false))
+      }
+    }
+  }
 }

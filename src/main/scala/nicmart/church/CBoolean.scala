@@ -29,7 +29,7 @@ object CBoolean {
   }
 
   def and(x: CBoolean)(y: CBoolean): CBoolean = x(y)(fls)
-  def or(x: CBoolean)(y: CBoolean): CBoolean = x(tru)(y)
+  def or  (x: CBoolean)(y: CBoolean): CBoolean = x(tru)(y)
   def not(x: CBoolean): CBoolean = x(fls)(tru)
   def xor(x: CBoolean)(y: CBoolean): CBoolean = x(not(y))(y)
 
